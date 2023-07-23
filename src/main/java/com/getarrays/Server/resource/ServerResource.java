@@ -51,7 +51,7 @@ public class ServerResource {
         );
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<Response> saveServer(@RequestBody @Valid Server server) {
         return ResponseEntity.ok(
                 Response.builder()
@@ -92,6 +92,6 @@ public class ServerResource {
 
     @GetMapping(path = "/image/{fileName}", produces = IMAGE_PNG_VALUE)
     public byte[] getImageServer(@PathVariable("fileName") String fileName) throws IOException {
-        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/Downloads/images" + fileName));
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/Downloads/images/" + fileName));
     }
 }
